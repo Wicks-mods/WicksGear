@@ -652,9 +652,49 @@ function Doll:Face(facing)
     if m and m.SetFacing then pcall(m.SetFacing, m, facing) end
 end
 
+-- What the model is wearing, as one string: the gear on the character
+-- and the pieces being tried on over it. Rebuilding the model puts the
+-- unit on it again, which blanks it for a moment, and Refresh runs
+-- whenever item data arrives, a stat moves or the list redraws. While
+-- the lists were loading that was three rebuilds a second, and with
+-- the release's three thousand items it went on for a minute: the
+-- character flashed, or never finished drawing at all. So the model is
+-- rebuilt only when this comes out different from the last time.
+local function wearing()
+    local S = ns.Score
+    local parts = {}
+    -- Every equipment slot, not only the ones the strip shows: a tabard
+    -- or a shirt is part of the picture too.
+    for slotId = 1, 19 do
+        parts[#parts + 1] = tostring(GetInventoryItemLink("player", slotId))
+    end
+    local tried = {}
+    for slotId in pairs(Doll.trying) do tried[#tried + 1] = slotId end
+    table.sort(tried)
+    for _, slotId in ipairs(tried) do
+        local t = Doll.trying[slotId]
+        if t.empty then
+            parts[#parts + 1] = slotId .. "=bare"
+        else
+            -- A piece the client has not loaded yet cannot be drawn, so
+            -- its arriving is a change the model has to hear about. One
+            -- that never arrives stays as it is and costs nothing.
+            local loaded = t.id and S:Cached(t.id)
+            parts[#parts + 1] = slotId .. "=" .. tostring(t.link) .. (loaded and "" or "?")
+        end
+    end
+    return table.concat(parts, ";")
+end
+
+-- The window clears modelWearing when it opens, so a model that has
+-- been hidden is always rebuilt once: it is not promised to have kept
+-- its picture.
 function Doll:RefreshModel()
     local m = self.model
     if not m then return end
+    local now = wearing()
+    if now == self.modelWearing then return end
+    self.modelWearing = now
     local ok = pcall(function()
         m:SetUnit("player")
         -- Four per cent closer, which is the character four per cent

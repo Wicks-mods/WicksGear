@@ -775,7 +775,13 @@ function UI:Build()
     -- It is not a tab any more, so nothing else will ever show it.
     cmp:Show()
 
-    p:SetScript("OnShow", function() UI:Refresh() end)
+    p:SetScript("OnShow", function()
+        -- The one moment the model is rebuilt without being asked: it
+        -- only redraws when what it wears changes, and a window that
+        -- has been closed should not come back to a stale picture.
+        if ns.Doll then ns.Doll.modelWearing = nil end
+        UI:Refresh()
+    end)
     self.panel = p
     self:Select("upgrades")
     return p
