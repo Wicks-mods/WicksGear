@@ -665,8 +665,12 @@ local function wearing()
     local parts = {}
     -- Every equipment slot, not only the ones the strip shows: a tabard
     -- or a shirt is part of the picture too.
+    -- Into a local first. For an empty slot the client returns nothing at
+    -- all rather than nil, and a call that returns nothing, passed
+    -- straight to tostring, raises. That stopped the model being built.
     for slotId = 1, 19 do
-        parts[#parts + 1] = tostring(GetInventoryItemLink("player", slotId))
+        local link = GetInventoryItemLink("player", slotId)
+        parts[#parts + 1] = link or "-"
     end
     local tried = {}
     for slotId in pairs(Doll.trying) do tried[#tried + 1] = slotId end
