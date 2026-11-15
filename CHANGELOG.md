@@ -1,5 +1,9 @@
 # Wick's Gear
 
+## Unreleased
+
+- Shows in the game's addon list with an icon and the two-tone Wick title, under a Wick's Mods heading.
+
 ## 0.9.7 (2026-10-03)
 
 ### Added
@@ -16,7 +20,7 @@
 - Group headings take the look's accent colour, so they change with the
   look chosen in WickCore.
 
-## 0.9.5 — 2026-09-24
+## 0.9.5 (2026-09-24)
 
 ### Added
 
@@ -42,7 +46,7 @@
   disagreed with your character sheet. Anything the client will not
   hand over reads as a dash rather than a guess.
 
-## 0.9.4 — 2026-09-24
+## 0.9.4 (2026-09-24)
 
 ### Fixed
 
@@ -55,7 +59,7 @@
   and trinkets have two slots each, and a ring worn in the second is
   still a ring you own.
 
-## 0.9.3 — 2026-09-24
+## 0.9.3 (2026-09-24)
 
 ### Changed
 

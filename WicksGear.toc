@@ -1,11 +1,15 @@
 ## Interface: 16001
-## Title: Wick's Gear
+## Title: |cffD4C8A1Wick's|r |cff4FC778Gear|r
 ## Notes: What to chase while levelling, scored against what you are wearing, and a browser for what drops where. Item names and stats come from the client, so nothing goes stale.
 ## Author: Wick
 ## Version: 0.9.7
 ## OptionalDeps: WickCore
 ## SavedVariables: WicksGearSaved
+## IconTexture: Interface\Icons\INV_Chest_Chain
+## Category: Wick's Mods
 ## X-Website: https://wicksmods.com
+## X-License: MIT with trademark carve-out
+## X-Curse-Project-ID: 1708290
 ## X-WickCore: WickCore-1.0
 
 Data.lua
