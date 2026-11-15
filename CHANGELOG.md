@@ -4,9 +4,9 @@
 
 ### Added
 
-- The release's dungeons. The lists were collected during the beta, which
-  had fewer dungeons and thinner loot tables than the game shipped with.
-  Dungeon gear goes from 430 pieces to 1,603, across 27 dungeons.
+- Dungeon gear goes from 430 pieces to 1,603, across the release's 27
+  dungeons. The lists were collected during the beta, which had fewer
+  dungeons and thinner loot tables than the game shipped with.
 - Five dungeons that were missing: City of Dalaran, The Drowned City,
   Krol'dok Stronghold, Alcaz Prison and Blackmaw Hold.
 - The Hall of Thanes and the Ruins of Lordaeron list what their bosses
