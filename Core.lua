@@ -142,7 +142,7 @@ function A:OnEnable()
         y = O:Check(page, "Only show what would be an upgrade",
             function() return db.hideWorn == true end,
             function(v) db.hideWorn = v; ns.UI:Refresh() end, y)
-        y = O:Note(page, ("Reading %d dungeons collected %s. Re-run the scrapers in WickSuite as the beta fills in: the later dungeons are thin because Wowhead's Forever data grows from what players actually see.")
+        y = O:Note(page, ("Reading %d dungeons, collected %s. Wowhead's Forever data grows from what players actually loot, so a dungeon nobody has cleared much yet can still be thin.")
             :format(#ns.DUNGEON_ORDER, ns.COLLECTED or "recently"), y)
 
         y = O:Button(page, "Open", function() ns.UI:Toggle() end, y - 4, 90)

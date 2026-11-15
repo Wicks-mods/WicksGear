@@ -1,5 +1,48 @@
 # Wick's Gear
 
+## Unreleased
+
+### Added
+
+- The release's dungeons. The lists were collected during the beta, which
+  had fewer dungeons and thinner loot tables than the game shipped with.
+  Dungeon gear goes from 430 pieces to 1,482, across 27 dungeons.
+- Five dungeons that were missing: City of Dalaran, The Drowned City,
+  Krol'dok Stronghold, Alcaz Prison and Blackmaw Hold.
+- The Hall of Thanes and the Ruins of Lordaeron list what their bosses
+  drop. Before, they had quest rewards and nothing else.
+- The level 50 to 60 dungeons are filled in. Blackrock Depths has 169
+  pieces where it had 28, Dire Maul 161 where it had 2, Stratholme 146,
+  Scholomance 108, and the Temple of Atal'Hakkar 54 where it had 1.
+
+### Changed
+
+- Level brackets are the release's. Sixteen of them had moved since the
+  beta: the Deadmines is 18 to 23 now, Dire Maul 58 to 60.
+- Every stat line was read again from the live game's tooltips. A third
+  of the pieces already listed had been retuned since the beta.
+- A piece is listed under a dungeon only when it names a boss, or the
+  dungeon itself, as where it comes from. World drops that happened to
+  be looted there are left out.
+
+### Removed
+
+- Eight pieces the release no longer ties to a dungeon: Face Smasher,
+  Haunting Blade, Phantom Armor and Abomination Skin Leggings from
+  Shadowfang Keep, "Mage-Eye" Blunderbuss from Razorfen Kraul, Pendant of
+  Myzrael and Scorn's Icy Choker from Scarlet Monastery, and Idol of the
+  Dream from the Temple of Atal'Hakkar.
+
+### Not in yet
+
+- Shaper's Terrace. Nobody has recorded what it drops, and a guess is
+  worse than a gap.
+- City of Dalaran has its quest rewards only, and Krol'dok Stronghold's
+  drops are not tied to a boss yet.
+- Blackrock Spire, crafted gear, zone quest rewards and sets still carry
+  the beta's lists.
+- Raids. None is open yet.
+
 ## 0.9.8 (2026-11-15)
 
 - Shows in the game's addon list with an icon and the two-tone Wick title, under a Wick's Mods heading.
