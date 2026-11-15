@@ -6,24 +6,43 @@
 
 - The release's dungeons. The lists were collected during the beta, which
   had fewer dungeons and thinner loot tables than the game shipped with.
-  Dungeon gear goes from 430 pieces to 1,482, across 27 dungeons.
+  Dungeon gear goes from 430 pieces to 1,603, across 27 dungeons.
 - Five dungeons that were missing: City of Dalaran, The Drowned City,
   Krol'dok Stronghold, Alcaz Prison and Blackmaw Hold.
 - The Hall of Thanes and the Ruins of Lordaeron list what their bosses
   drop. Before, they had quest rewards and nothing else.
 - The level 50 to 60 dungeons are filled in. Blackrock Depths has 169
-  pieces where it had 28, Dire Maul 161 where it had 2, Stratholme 146,
-  Scholomance 108, and the Temple of Atal'Hakkar 54 where it had 1.
+  pieces where it had 28, Dire Maul 161 where it had 2, Blackrock Spire
+  154 where it had 33, Stratholme 146, Scholomance 108, and the Temple
+  of Atal'Hakkar 54 where it had 1.
+- Quest rewards from the release's new zones, Riverglades, Shen'dralas
+  and Mount Hyjal, and from zones the beta had nothing recorded for:
+  Ironforge, Wetlands, Desolace, Un'Goro Crater, Alterac Mountains, the
+  Hinterlands and the Blasted Lands. 358 rare and better rewards across
+  24 zones, where there were 179 across 15.
+- The recipes the release added: 69 more crafted pieces across
+  Blacksmithing, Leatherworking and Tailoring, 1,356 in all.
+- Four sets new to the release: Defias Enforcer's Garb, Krol'dok
+  Battlegear, Rotmender's Raiment and Violet Sorcerer's Vestments.
+
+### Fixed
+
+- The character in the wardrobe flashed, or never finished drawing,
+  while the lists were loading. The model was rebuilt every time item
+  data arrived, about three times a second, and with this many items
+  that went on for a minute. It is rebuilt only when what it wears
+  changes, and once when the window opens.
 
 ### Changed
 
 - Level brackets are the release's. Sixteen of them had moved since the
   beta: the Deadmines is 18 to 23 now, Dire Maul 58 to 60.
-- Every stat line was read again from the live game's tooltips. A third
-  of the pieces already listed had been retuned since the beta.
+- Every dungeon stat line was read again from the live game's tooltips.
+  A third of the pieces already listed had been retuned since the beta.
 - A piece is listed under a dungeon only when it names a boss, or the
   dungeon itself, as where it comes from. World drops that happened to
   be looted there are left out.
+- Stranglethorn Vale is one zone in this game and is named as one.
 
 ### Removed
 
@@ -32,6 +51,10 @@
   Shadowfang Keep, "Mage-Eye" Blunderbuss from Razorfen Kraul, Pendant of
   Myzrael and Scorn's Icy Choker from Scarlet Monastery, and Idol of the
   Dream from the Temple of Atal'Hakkar.
+- Five rewards from the Barrens that are no longer listed as rare.
+- Seven crafted pieces the release has no recipe for: Golden Scale
+  Gauntlets, Turtle Scale Gloves, Phoenix Bindings, Invoker's Cord,
+  Invoker's Mantle, Leather-Reinforced Runecloth Bag and SAF-T Teleport.
 
 ### Not in yet
 
@@ -39,8 +62,6 @@
   worse than a gap.
 - City of Dalaran has its quest rewards only, and Krol'dok Stronghold's
   drops are not tied to a boss yet.
-- Blackrock Spire, crafted gear, zone quest rewards and sets still carry
-  the beta's lists.
 - Raids. None is open yet.
 
 ## 0.9.8 (2026-11-15)
