@@ -1,5 +1,20 @@
 # Wick's Gear
 
+## Unreleased
+
+### Added
+
+- Upgrades scores the rare quest rewards of the zones as well, and names
+  the zone. It now draws on dungeon drops, crafted gear and quest rewards.
+
+### Fixed
+
+- A quest reward only the other faction's quest gives is no longer
+  listed or suggested. A Horde character saw Ironforge's rewards, and an
+  Alliance one Orgrimmar's.
+- A quest reward made for another class is not suggested as an upgrade,
+  and the Equippable switch hides it in Browse.
+
 ## 0.9.10 (2026-11-21)
 
 ### Added

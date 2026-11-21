@@ -11,11 +11,13 @@
 The best gear upgrade for every slot while leveling, scored for your class
 against what you are wearing, with where to get it.
 
-**Upgrades** answers "what should I be chasing". It scores the dungeon drops
-and crafted gear you could wear at your level against what you have on and
-names the best piece for each slot: your best in slot pick right now, the
-dungeon and boss it drops from or the profession that makes it, and how
-many points better it is. It works from level 1.
+**Upgrades** answers "what should I be chasing". It scores the dungeon
+drops, crafted gear and rare quest rewards you could wear at your level
+against what you have on and names the best piece for each slot: your best
+in slot pick right now, the dungeon and boss it drops from, the profession
+that makes it or the zone whose quest gives it, and how many points better
+it is. It works from level 1, and only offers what your faction and class
+can get.
 
 **Browse** answers "where do I get it". Four lists with one search box:
 dungeon drops by boss across 27 dungeons, crafted gear with the skill each

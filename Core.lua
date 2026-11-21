@@ -84,13 +84,44 @@ ns.ENTRY = {}
 -- client has never met, and a crafted piece or a quest reward from a zone
 -- the character has not been to is exactly that: leaving them out meant
 -- the two newest sources had no names, no tooltips and no chat links.
+-- Which faction this character is: "A" or "H", or nil before the client
+-- says. A quest reward can carry a side, when only one faction's quest
+-- gives it.
+function ns.Side()
+    if ns._side == nil then
+        local f = UnitFactionGroup and UnitFactionGroup("player")
+        if f == "Alliance" then ns._side = "A" elseif f == "Horde" then ns._side = "H" end
+    end
+    return ns._side
+end
+
+-- Whether a reward is one this character's faction can earn. One with no
+-- side is anybody's, and so is every one while the faction is unknown.
+function ns.ForMe(entry)
+    local s = entry and entry.side
+    local mine = ns.Side()
+    return not s or not mine or s == mine
+end
+
+-- Whether a reward made for certain classes is made for this one. cm is a
+-- mask with a bit per class, the class's number less one.
+function ns.ForMyClass(entry)
+    local cm = entry and entry.cm
+    if not cm or not bit or not bit.band then return true end
+    local _, _, id = UnitClass("player")
+    if not id then return true end
+    return bit.band(cm, 2 ^ (id - 1)) ~= 0
+end
+
 local function index(tbl, key, nested)
     for group, rows in pairs(tbl or {}) do
         for _, it in ipairs(nested and rows.items or rows) do
             -- Where it came from is part of describing it, and the data
             -- files are keyed the other way round.
             it[key] = group
-            ns.ENTRY[it.id] = it
+            -- An item two factions' quests both give is listed once for
+            -- each. The one this character can earn is the one to describe.
+            if ns.ForMe(it) or not ns.ENTRY[it.id] then ns.ENTRY[it.id] = it end
         end
     end
 end

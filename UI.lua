@@ -300,11 +300,11 @@ function UI:FillUpgrades()
 
     -- Best candidate per slot, and what you are wearing there.
     local best = {}
-    -- Dungeon drops, and what the gear professions make. Crafted gear
-    -- starts at level 1 where the first dungeon drop wants level 9, so a
-    -- new character has something to chase; it can be made, bought or
-    -- asked for. Zone quest rewards are not scored: the data does not say
-    -- which faction a quest belongs to.
+    -- Dungeon drops, what the gear professions make, and the rare quest
+    -- rewards of the zones. Crafted gear starts at level 1 where the first
+    -- dungeon drop wants level 9, so a new character has something to
+    -- chase; it can be made, bought or asked for. A quest reward the other
+    -- faction's quest gives, or one made for another class, is passed over.
     local pools = {}
     for dungeon, d in pairs(ns.DUNGEONS) do
         pools[#pools + 1] = { rows = d.items, group = dungeon }
@@ -312,11 +312,15 @@ function UI:FillUpgrades()
     for profession, rows in pairs(ns.CRAFTED or {}) do
         pools[#pools + 1] = { rows = rows, group = profession, crafted = true }
     end
+    for zone, rows in pairs(ns.QUESTS or {}) do
+        pools[#pools + 1] = { rows = rows, group = zone, quest = true }
+    end
     local function whereOf(cand)
         local e = cand.entry
         if cand.crafted then
             return e.skill and ("%s  skill %d"):format(cand.dungeon, e.skill) or (cand.dungeon .. "  crafted")
         end
+        if cand.quest then return cand.dungeon .. "  quest reward" end
         return ("%s  %s%s"):format(cand.dungeon, e.how or "drop", e.from and (" from " .. e.from) or "")
     end
     for _, pool in ipairs(pools) do
@@ -329,7 +333,7 @@ function UI:FillUpgrades()
             -- left to Browse.
             local gated = pool.crafted and pool.group == "Engineering"
                 and (entry.ilvl or 0) - (entry.req or 0) > 12
-            if (entry.req or 0) <= cap and not gated then
+            if (entry.req or 0) <= cap and not gated and ns.ForMe(entry) and ns.ForMyClass(entry) then
                 local info = S:Info(entry.id)
                 -- Something you are already wearing is not an upgrade on
                 -- itself. It can still be the best thing in the data for
@@ -348,6 +352,7 @@ function UI:FillUpgrades()
                         local cur = best[info.slot]
                         if not cur or pts > cur.pts then
                             best[info.slot] = { pts = pts, why = why, info = info, crafted = pool.crafted,
+                                                quest = pool.quest,
                                                 entry = entry, dungeon = dungeon, link = link }
                         end
                     end
@@ -478,7 +483,11 @@ function UI:FillBrowse()
     -- Whether this character could wear it at all. Asked once per row and
     -- again to decide whether a group has anything left worth opening.
     local function fits(entry)
+        -- The other faction's quest reward is not on offer to this
+        -- character, whatever else is being shown.
+        if not ns.ForMe(entry) then return false end
         if not onlyFits then return true end
+        if not ns.ForMyClass(entry) then return false end
         local info = S:Info(entry.id)
         -- An item the client has not described yet is kept: hiding it
         -- would make the list shrink as the answers arrive, which reads
