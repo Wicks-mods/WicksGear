@@ -2,7 +2,7 @@
 ## Title: |cffD4C8A1Wick's|r |cff4FC778Gear|r
 ## Notes: The best gear upgrade for every slot while leveling, scored for your class against what you wear, with where to get it. Browse dungeon loot by boss, crafted gear, quest rewards and sets.
 ## Author: Wick
-## Version: 0.9.10
+## Version: 0.9.11
 ## OptionalDeps: WickCore
 ## SavedVariables: WicksGearSaved
 ## IconTexture: Interface\Icons\INV_Chest_Chain

@@ -1,6 +1,6 @@
 # Wick's Gear
 
-## Unreleased
+## 0.9.11 (2026-11-21)
 
 ### Added
 
