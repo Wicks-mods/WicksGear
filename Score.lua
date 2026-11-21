@@ -384,7 +384,12 @@ function S:FillTooltip(tt, id, link)
     end
 
     tt:AddLine(" ")
-    if e.how == "quest" then
+    if e.profession then
+        tt:AddLine(e.skill and ("Made with %s, skill %d"):format(e.profession, e.skill)
+            or ("Made with %s"):format(e.profession), 0.31, 0.78, 0.47, true)
+    elseif e.zone then
+        tt:AddLine(("Quest reward in %s"):format(e.zone), 0.31, 0.78, 0.47, true)
+    elseif e.how == "quest" then
         tt:AddLine(("Quest reward in %s"):format(e.dungeon or "a dungeon")
             .. (e.from and (", from " .. e.from) or ""), 0.31, 0.78, 0.47, true)
     else

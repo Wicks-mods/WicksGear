@@ -8,27 +8,46 @@
 [![Discord](https://img.shields.io/badge/discord-join-4FC778?style=flat-square&labelColor=171124)](https://discord.gg/GWGTMhYBZY)
 <!-- wick:badges:end -->
 
-What to chase while levelling, and a quick way to look up what drops where.
+The best gear upgrade for every slot while leveling, scored for your class
+against what you are wearing, with where to get it.
 
-**Upgrades** scores every levelling drop against what you are wearing and
-names the best piece per slot, in points of your class's main stat.
+**Upgrades** answers "what should I be chasing". It scores the dungeon drops
+and crafted gear you could wear at your level against what you have on and
+names the best piece for each slot: your best in slot pick right now, the
+dungeon and boss it drops from or the profession that makes it, and how
+many points better it is. It works from level 1.
 
-**Browse** is a dungeon-by-dungeon list. Not a replacement for a full loot
-browser, just enough to answer "what's in here" without installing one.
+**Browse** answers "where do I get it". Four lists with one search box:
+dungeon drops by boss across 27 dungeons, crafted gear with the skill each
+recipe needs, rare quest rewards by zone, and gear grouped by set. Type a
+slot, an item, a boss or a zone.
+
+**Sets** show how many pieces you wear, which bonuses you have earned and
+how many pieces the next one needs.
+
+**Wardrobe** is a paperdoll to try pieces on. Right-click anything in a list
+and it shows what the piece would do to your stats, green up and red down.
+Ctrl-click opens the dressing room and Shift-click links the item in chat.
+
+Open it from the Wick's Mods minimap button: left-click for upgrades,
+right-click for browse. Or by command:
 
     /wgear            upgrades
     /wgear browse     what drops where
     /wgear options    weights, and which way you play
 
-The addon ships item ids and where they come from, and nothing else. Every
-name, icon, stat and tooltip is asked of the client as you open the window,
-so the numbers are the ones this server is using and nothing goes stale
-against a patch.
+Stat lines were read from the live game's tooltips, and the client's own
+answer wins wherever it has one, so the numbers are the ones this server is
+using. What a point of Agility or Intellect is worth to you comes from the
+same conversions your character sheet uses.
 
-Weights are tuned for levelling rather than raiding. At 60 you maximise
-damage over a fight you repeat; levelling you minimise time to the next
+Weights are tuned for leveling rather than raiding. At 60 you maximize
+damage over a fight you repeat; leveling, you minimize time to the next
 level, and the drain on that is downtime. Stamina and Spirit are worth more
-here than any endgame list would allow, on purpose.
+here than any endgame list would allow, on purpose. Classes that play two
+ways pick theirs in the options.
+
+Raids open on December 9 and are not listed yet.
 
 Requires WickCore.
 

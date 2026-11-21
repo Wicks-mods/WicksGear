@@ -300,9 +300,36 @@ function UI:FillUpgrades()
 
     -- Best candidate per slot, and what you are wearing there.
     local best = {}
+    -- Dungeon drops, and what the gear professions make. Crafted gear
+    -- starts at level 1 where the first dungeon drop wants level 9, so a
+    -- new character has something to chase; it can be made, bought or
+    -- asked for. Zone quest rewards are not scored: the data does not say
+    -- which faction a quest belongs to.
+    local pools = {}
     for dungeon, d in pairs(ns.DUNGEONS) do
-        for _, entry in ipairs(d.items) do
-            if entry.req <= cap then
+        pools[#pools + 1] = { rows = d.items, group = dungeon }
+    end
+    for profession, rows in pairs(ns.CRAFTED or {}) do
+        pools[#pools + 1] = { rows = rows, group = profession, crafted = true }
+    end
+    local function whereOf(cand)
+        local e = cand.entry
+        if cand.crafted then
+            return e.skill and ("%s  skill %d"):format(cand.dungeon, e.skill) or (cand.dungeon .. "  crafted")
+        end
+        return ("%s  %s%s"):format(cand.dungeon, e.how or "drop", e.from and (" from " .. e.from) or "")
+    end
+    for _, pool in ipairs(pools) do
+        local dungeon = pool.group
+        for _, entry in ipairs(pool.rows) do
+            -- Engineering's goggles and gadgets ask for the profession, not a
+            -- level, to wear: the data gives them level 5 and an item level
+            -- in the forties. Suggesting them to a level 8 is wrong, and the
+            -- data does not carry the skill they need worn, so they are
+            -- left to Browse.
+            local gated = pool.crafted and pool.group == "Engineering"
+                and (entry.ilvl or 0) - (entry.req or 0) > 12
+            if (entry.req or 0) <= cap and not gated then
                 local info = S:Info(entry.id)
                 -- Something you are already wearing is not an upgrade on
                 -- itself. It can still be the best thing in the data for
@@ -320,7 +347,7 @@ function UI:FillUpgrades()
                     if pts > 0 then
                         local cur = best[info.slot]
                         if not cur or pts > cur.pts then
-                            best[info.slot] = { pts = pts, why = why, info = info,
+                            best[info.slot] = { pts = pts, why = why, info = info, crafted = pool.crafted,
                                                 entry = entry, dungeon = dungeon, link = link }
                         end
                     end
@@ -340,8 +367,7 @@ function UI:FillUpgrades()
                 shown = shown + 1
                 local r = acquire(pane, i)
                 r.itemID, r.link = cand.entry.id, cand.link
-                r.note = ("%s, %s%s"):format(cand.dungeon, cand.entry.how,
-                    cand.entry.from and (" from " .. cand.entry.from) or "")
+                r.note = whereOf(cand)
                 r.icon:SetTexture(cand.info.icon)
                 setUsable(r, true)
                 local name = S:NameFor(cand.entry.id) or "loading..."
@@ -349,8 +375,7 @@ function UI:FillUpgrades()
                 local qc = S:QualityRGB(cand.entry.id)
                 r.left:SetTextColor(qc[1], qc[2], qc[3])
                 r.stats:SetText(S:StatLine(cand.entry.id))
-                r.mid:SetText(("%s  %s%s"):format(cand.dungeon, cand.entry.how,
-                    cand.entry.from and (" from " .. cand.entry.from) or ""))
+                r.mid:SetText(whereOf(cand))
                 -- Rounded to a whole number before the sign goes on.
                 -- "%+.0f" on anything between minus a half and zero
                 -- prints "-0", which reads as a downgrade that is not
@@ -373,7 +398,7 @@ function UI:FillUpgrades()
     if shown == 0 then
         pane.empty:SetText(db.hideWorn
             and "Nothing here beats what you are wearing. Which is the answer, even if it is a dull one."
-            or "Nothing scored yet. If this persists, the item data has not arrived from the server.")
+            or "Nothing to suggest yet. The list fills as the game describes each piece; give it a moment.")
     end
     pane.head:SetText(("%s, level %d  |cff8a8270scored against what you have on|r")
         :format(ns.Score:ClassKey():gsub("_", " "):lower(), level))

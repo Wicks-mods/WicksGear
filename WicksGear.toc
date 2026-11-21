@@ -1,6 +1,6 @@
 ## Interface: 16001
 ## Title: |cffD4C8A1Wick's|r |cff4FC778Gear|r
-## Notes: What to chase while levelling, scored against what you are wearing, and a browser for what drops where. Item names and stats come from the client, so nothing goes stale.
+## Notes: The best gear upgrade for every slot while leveling, scored for your class against what you wear, with where to get it. Browse dungeon loot by boss, crafted gear, quest rewards and sets.
 ## Author: Wick
 ## Version: 0.9.9
 ## OptionalDeps: WickCore

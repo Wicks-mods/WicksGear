@@ -1,5 +1,18 @@
 # Wick's Gear
 
+## Unreleased
+
+### Added
+
+- Upgrades scores crafted gear as well as dungeon drops, and names the
+  profession and the skill the recipe needs. A character below level 9
+  had an empty list, because no dungeon drop can be worn before then.
+
+### Fixed
+
+- An empty Upgrades list no longer says the item data has not arrived.
+- The tooltip of a crafted piece said it drops in a dungeon.
+
 ## 0.9.9 (2026-11-15)
 
 ### Added
